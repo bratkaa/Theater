@@ -1,0 +1,180 @@
+﻿<Window x:Class="Theater.View.MainWindowView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Theater.View"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        MouseLeftButtonDown="LMouseDown"
+        Title="MainWindow" Height="750" Width="1400"
+
+        
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        FontFamily="{DynamicResource MaterialDesignFont}"  WindowStartupLocation="CenterScreen">
+
+
+    <Window.Resources>
+        <Style x:Key="CustomColorMaterialDesign3NavigationListBoxItem"
+           TargetType="ListBoxItem"
+           BasedOn="{StaticResource MaterialDesign3.NavigationRailListBoxItem}">
+            <Setter Property="Background" Value="#4A4458" />
+            <Setter Property="Foreground" Value="#E8DEF8" />
+        </Style>
+    </Window.Resources>
+
+    <Border Background="#fdfff5" >
+
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+
+            <Grid HorizontalAlignment="Left" Grid.Column="0" >
+
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+						Height="auto"	/>
+                        <RowDefinition
+						Height="*"	/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.Background >
+                        <LinearGradientBrush>
+                            <GradientStop Color="#24243e" Offset="0"></GradientStop>
+                            <GradientStop Color="#302b63" Offset="0.6"></GradientStop>
+                            <GradientStop Color="#24243e" Offset="1"></GradientStop>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+
+                    <Image Source="/Images/nehamletLogo.png" Width="69" Height="69" Margin="0,37,0,80"/>
+
+                    <Viewbox Grid.Row="1" 
+                             Width="80"
+                             VerticalAlignment="Top"
+                             Stretch="Uniform">
+                        <ListBox 
+                            Grid.Row="1"
+						    Margin="0,0,0,0"
+						    Foreground="#E8DEF8"
+						    ItemsSource="{Binding	SampleList}"
+						    SelectedIndex="0">
+
+                            <ListBoxItem Foreground="#fdfff5" MouseLeftButtonUp="MouseLeftButtonUp_1" x:Name="AdmItem" >
+                                <materialDesign:NavigationRailAssist.SelectedIcon>
+                                    <materialDesign:PackIconKind>
+                                        AccountMultiplePlus
+                                    </materialDesign:PackIconKind>
+                                </materialDesign:NavigationRailAssist.SelectedIcon>
+
+                                <materialDesign:NavigationRailAssist.UnselectedIcon>
+                                    <materialDesign:PackIconKind>
+                                        AccountMultiplePlusOutline
+                                    </materialDesign:PackIconKind>
+                                </materialDesign:NavigationRailAssist.UnselectedIcon>
+
+                                <TextBlock Text="Clients"/>
+                            </ListBoxItem>
+
+                            <ListBoxItem Foreground="#fdfff5" MouseLeftButtonUp="MouseLeftButtonUp_2">
+                                <materialDesign:NavigationRailAssist.SelectedIcon>
+                                    <materialDesign:PackIconKind>
+                                        MovieOpenPlus
+                                    </materialDesign:PackIconKind>
+                                </materialDesign:NavigationRailAssist.SelectedIcon>
+
+                                <materialDesign:NavigationRailAssist.UnselectedIcon>
+                                    <materialDesign:PackIconKind>
+                                        MovieOpenPlusOutline
+                                    </materialDesign:PackIconKind>
+                                </materialDesign:NavigationRailAssist.UnselectedIcon>
+                                <TextBlock Text="Workers"/>
+                            </ListBoxItem>
+
+                            <ListBoxItem Foreground="#fdfff5"  MouseLeftButtonUp="MouseLeftButtonUp_3">
+                                <materialDesign:NavigationRailAssist.SelectedIcon>
+                                    <materialDesign:PackIconKind>
+                                        Ticket
+                                    </materialDesign:PackIconKind>
+                                </materialDesign:NavigationRailAssist.SelectedIcon>
+
+                                <materialDesign:NavigationRailAssist.UnselectedIcon>
+                                    <materialDesign:PackIconKind>
+                                        TicketOutline
+                                    </materialDesign:PackIconKind>
+                                </materialDesign:NavigationRailAssist.UnselectedIcon>
+                                <TextBlock Text="Application"/>
+                            </ListBoxItem>
+
+                            <ListBoxItem Foreground="#fdfff5" MouseLeftButtonUp="MouseLeftButtonUp_4">
+                                <materialDesign:NavigationRailAssist.SelectedIcon>
+                                    <materialDesign:PackIconKind>
+                                        ChartBox
+                                    </materialDesign:PackIconKind>
+                                </materialDesign:NavigationRailAssist.SelectedIcon>
+
+                                <materialDesign:NavigationRailAssist.UnselectedIcon>
+                                    <materialDesign:PackIconKind>
+                                        ChartBoxOutline
+                                    </materialDesign:PackIconKind>
+                                </materialDesign:NavigationRailAssist.UnselectedIcon>
+                                <TextBlock Text="Statistics"/>
+                            </ListBoxItem>
+
+
+
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem"
+                                       BasedOn="{StaticResource	MaterialDesign3.NavigationRailPrimaryListBoxItem}">
+                                    
+                                    <Setter
+                                        Property="materialDesign:NavigationRailAssist.IsTextVisible"
+                                        Value="False"	/>
+                                    <Setter
+                                        Property="materialDesign:NavigationRailAssist.SelectedIcon"
+                                        Value="{Binding	SelectedIcon}"	/>
+                                    <Setter
+                                        Property="materialDesign:NavigationRailAssist.UnselectedIcon"
+                                        Value="{Binding	UnselectedIcon}"	/>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                        </ListBox>
+                    </Viewbox>
+
+                    <Button Width="55" Height="55" 
+                            Margin="0,0,0,20"
+                            materialDesign:ButtonAssist.CornerRadius="32"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Foreground="#FFD8E4"
+                            Grid.Row="1"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom" Style="{StaticResource MaterialDesignFlatMidBgButton}" Click="Button_Click">
+                        <materialDesign:PackIcon Width="23" 
+                                                 Height="23"
+                                                 Kind="ExitToApp" Foreground="#fdfff5" />
+                    </Button>
+                </Grid>
+            </Grid>
+
+
+            <Frame x:Name="MainFrame" 
+               Grid.Column="1"
+               NavigationUIVisibility="Hidden"/>
+
+
+
+        </Grid>
+    </Border>
+</Window>

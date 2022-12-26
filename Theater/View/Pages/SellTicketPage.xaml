@@ -1,0 +1,72 @@
+﻿<Page x:Class="Theater.View.Pages.Page3"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:Theater.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="750" d:DesignWidth="1320"
+       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"  Background="Wheat"
+        TextOptions.TextRenderingMode="Auto"        
+        FontFamily="{DynamicResource MaterialDesignFont}">
+
+    <Border Background="#fdfff5">
+        <Grid>
+
+            <ListView x:Name="WorkersList"
+            ItemsSource="{Binding Path=Pieces}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding Name}" 
+                            Header="Название пьесы" />
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding Description}" 
+                            Header="Описание пьесы" />
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding Price}" 
+                            Header="Цена билета" />
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding AuthorName}"
+                            Header="Автор" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="14">
+                <Button Content="Обновить данные" Width="175" Height="30" Margin="0 0 15 0"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Style="{StaticResource MaterialDesignPaperButton}" />
+
+                <ComboBox Width="175" materialDesign:HintAssist.Hint="Количество билетов" VerticalAlignment="Center" 
+                          Margin="0 0 15 0" IsEditable="True" x:Name="ComboBox">
+                    <ComboBoxItem
+                Content="1" />
+                    <ComboBoxItem
+                Content="2" />
+                    <ComboBoxItem
+                Content="3" />
+                    <ComboBoxItem
+                Content="4" />
+                    <ComboBoxItem
+                Content="5" />
+                </ComboBox>
+
+                <Button Content="Продать билет" Width="175" Height="30" Margin="0 0 15 0"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Style="{StaticResource MaterialDesignPaperButton}" Click="Button_Click" />
+
+            </StackPanel>
+
+            <Frame x:Name="MainPageFrame" Height="315" Width="500" HorizontalAlignment="Center" VerticalAlignment="Center" 
+               NavigationUIVisibility="Hidden"/>
+
+
+        </Grid>
+
+    </Border>
+</Page>
